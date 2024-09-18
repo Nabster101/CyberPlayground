@@ -7,3 +7,21 @@ body{
     color: white;
     text-align: center;
 }
+
+.attackContainer{
+    height: 90%;
+    text-align: center;
+    background: white;
+    border-radius: 40px;
+    padding: 3vh;
+    border: 2px solid white;
+    margin: 2vh;
+}
+
+.userTable{
+    margin: 0 auto;
+}
+
+td{
+    padding: 1vh;
+}

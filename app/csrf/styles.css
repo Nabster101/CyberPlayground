@@ -1,0 +1,24 @@
+body{
+    background-color: #0a2463 !important;
+}
+
+.indexTitleContainer{
+    margin-top: 6vh;
+    color: white;
+    text-align: center;
+}
+
+.colCenter{
+    text-align: center;
+    margin-top: 10vh !important;
+}
+
+.homeButton{
+    font-size:3vh; 
+    margin: 3vh; 
+    text-decoration:none;
+}
+
+.content{
+    color: white;
+}

