@@ -4,6 +4,7 @@
     <head>
         <title>SQLi-pentest</title>
         <link rel="stylesheet" type="text/css" href="./styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
 
     <body>
@@ -72,12 +73,12 @@
                         echo "</div>";
 
                                 
-                        echo "<div class='container' style='text-align:center;'>";
-                        echo "<a href='index.php' id='logout_button' style='margin: 3vh; display:block;'>Logout</a>";
+                        echo "<div style='text-align:center;'>";
+                        echo "<a href='index.php' id='logout_button' style='text-align:center; margin: 3vh; display:block;'>Logout</a>";
                         echo "</div>";
 
                     } else {
-                        echo "<div style='margin: 3vh auto 3vh auto'>Invalid credentials</div>";
+                        echo "<div style='text-align:center; margin: 3vh auto 3vh auto'>Invalid credentials</div>";
                     }
                 } 
 
@@ -87,9 +88,24 @@
 
             echo "<br>";
             echo "<br>";
+            echo "<div style='text-align:center;'>";
             echo "<a href='create.php' id='register_button' style='margin: 3vh;'>Create Account</a>";
+            echo "</div>";
 
         ?>
+
+        <div class="row">
+            <div class="col colCenter" style='text-align:center; margin-top:2vh;'>
+                <?php
+
+                    echo "<a href='../index.php' id='home_button' class='homeButton'><i class='fa-solid fa-house' style='color:white'></i></a>";
+
+                ?>
+            </div>
+        </div>
     
     </body>
+    <script src="https://kit.fontawesome.com/44d253a4e8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </html>

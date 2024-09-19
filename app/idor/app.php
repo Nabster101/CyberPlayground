@@ -18,7 +18,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col colCenter">
+                <div class="col colCenter" style="color:white">
                     <?php
                         $dsn = 'pgsql:host=postgres;port=5432;dbname=database';
                         $username = 'user';
@@ -26,37 +26,39 @@
         
                         $pdo = new PDO($dsn, $username, $password);
 
-                        echo "<form method='GET'>";
-                        echo "<input type='text' name='username' placeholder='Username'>";
-                        echo "<br>";
-                        echo "<br>";
-                        echo "<input type='password' name='password' placeholder='Password'>";
-                        echo "<br>";
-                        echo "<br>";
-                        echo "<input type='submit' value='Login'>";
-                        echo "</form>";
 
-                        if(isset($_GET['username']) && isset($_GET['password'])) {
-                            $username = $_GET['username'];
-                            $password = $_GET['password'];
-                            $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-                            $stmt = $pdo->query($sql);
-
-                            if ($stmt->rowCount() > 0) {
-                                echo "<h2 style='color:white;'>Logged in</h2>";
-                                echo "<p style='color:white;'>Welcome, $username</p>";
-                                echo "<p style='color:white;'>Important info!</p>";
-                            }
-                        }
-
-                        if(isset($_GET['username'])){
+                        if (isset($_GET['username'])) {
                             $username = $_GET['username'];
                             $sql = "SELECT * FROM users WHERE username = '$username'";
                             $stmt = $pdo->query($sql);
-                            if ($stmt->rowCount() > 0) {
-                                echo "<h2 style='color:white;'>Logged in</h2>";
-                                echo "<p style='color:white;'>Welcome, $username</p>";
-                            }
+
+                            echo "<h3 class='tableTitle' style='margin-top:4vh'>User profile</h3>";
+                            echo "<table class='table' style='color:white; margin-top:3vh;'>";
+                                echo "<thead>";
+                                    echo "<tr>";
+                                        echo "<th scope='col'>ID</th>";
+                                        echo "<th scope='col'>Name</th>";
+                                        echo "<th scope='col'>Email</th>";
+                                        echo "<th scope='col'>Password</th>";
+                                    echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                    if($stmt->rowCount() > 0){
+                                        while($row = $stmt->fetch()) {
+                                            echo "<tr>";
+                                                echo "<td>" . $row['id'] . "</td>";
+                                                echo "<td>" . $row['username'] . "</td>";
+                                                echo "<td>" . $row['email'] . "</td>";
+                                                echo "<td>" . $row['password'] . "</td>";
+                                            echo "</tr>";
+                                        }
+                                    }else{
+                                        echo "<tr>";
+                                            echo "<td colspan='4'>Invalid username!</td>";
+                                        echo "</tr>";
+                                    }
+                                echo "</tbody>";
+                            echo "</table>";
                         }
                     ?>
                 </div>

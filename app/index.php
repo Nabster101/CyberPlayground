@@ -136,7 +136,10 @@
                     <div class="attackContainer">
                         <h4 style="text-align:center;">Insecure Direct Object Reference</h4>
                         <p style="text-align:justify">Insecure Direct Object Reference (IDOR) is a type of vulnerability that allows attackers to access unauthorized resources on a server. This can lead to unauthorized access to sensitive data, such as user accounts, files, or database records. IDOR attacks are categorized into different types, including direct and indirect.</p>
-                        <button class="btn btn-primary" onclick="window.location.href='/idor/app.php'">Start</button>
+                        <?php
+                            $user = $_SESSION['username'];
+                            echo "<a class='btn btn-primary' href='../idor/app.php?username=" . urlencode($username) . "' >Start</a>";
+                        ?>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">

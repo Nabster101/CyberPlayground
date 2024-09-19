@@ -7,8 +7,9 @@
     </head>
 
     <body>
-        <div class="indexTitleContainer">
-            <h1 class="indexTitle">very imporant data</h1>
+        <div style="color:white">
+            Important info!
+
         </div>
     
     </body>
