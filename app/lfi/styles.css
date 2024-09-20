@@ -8,14 +8,15 @@ body{
     text-align: center;
 }
 
-.attackContainer{
-    height: 90%;
+.colCenter{
     text-align: center;
-    background: white;
-    border-radius: 40px;
-    padding: 3vh;
-    border: 2px solid white;
-    margin: 2vh;
+    margin-top: 5vh;
+}
+
+.homeButton{
+    font-size:3vh; 
+    margin: 3vh; 
+    text-decoration:none;
 }
 
 .userTable{
