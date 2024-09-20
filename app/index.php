@@ -71,11 +71,6 @@
                         echo "<hr style='margin: 0 auto 4vh auto; width:50%; text-align:center;'>";
 
 
-                        if(isset($_GET['username'])){
-                            $_SESSION['username'] = $_GET['username'];
-                        }
-
-
                         if (isset($_GET['username']) && isset($_GET['password'])) {
                             $username = $_GET['username'];
                             $password = $_GET['password'];
@@ -83,14 +78,7 @@
                             $stmt = $pdo->query($sql);
 
                             if ($stmt->rowCount() > 0) {
-                                echo "<script>document.getElementById('login-form').style.display = 'none';</script>";
-                                echo "<h3 style='margin-top:3vh'>Logged in</h3>";
-                                echo "<p>Welcome, $username</p>";
-                                
-                                echo "<div class='container' style='text-align:center;'>";
-                                echo "<a href='index.php' id='logout_button' style='margin: 3vh; display:block;'>Logout</a>";
-                                echo "</div>";
-
+                                $_SESSION['username'] = $_GET['username'];
                             } else {
                                 echo "<div style='margin: 3vh auto 3vh auto'>Invalid credentials</div>";
                             }
@@ -100,10 +88,28 @@
                         echo 'Connection failed: ' . $e->getMessage();
                     }
 
+                        if(isset($_SESSION['username'])){
+                            $user = $_SESSION['username'];
+                            echo "<h5>Logged in as $user</h5>";
+
+                            echo "<div class='container' style='text-align:center;'>";
+                            echo "<a href='logout.php' id='logout_button' style='margin: 3vh; display:block;'>Logout</a>";
+                            echo "</div>";
+                        }
+
+                        
+
                     ?>
                 </div>
             </div>
-            <div class="row">
+            <?php
+                if(isset($_SESSION['username'])){
+                    echo "<style> .check{ display:flex } </style>";
+                }else{
+                    echo "<style> .check{ display:none } </style>";
+                }
+            ?>
+            <div class="row check">
                 <div class="col-lg-4 col-sm-6">
                     <div class="attackContainer">
                         <h4 style="text-align:center;">SQL Injection</h4>
@@ -138,7 +144,7 @@
                         <p style="text-align:justify">Insecure Direct Object Reference (IDOR) is a type of vulnerability that allows attackers to access unauthorized resources on a server. This can lead to unauthorized access to sensitive data, such as user accounts, files, or database records. IDOR attacks are categorized into different types, including direct and indirect.</p>
                         <?php
                             $user = $_SESSION['username'];
-                            echo "<a class='btn btn-primary' href='../idor/app.php?username=" . urlencode($username) . "' >Start</a>";
+                            echo "<a class='btn btn-primary' href='../idor/app.php?username=" . urlencode($user) . "' >Start</a>";
                         ?>
                     </div>
                 </div>

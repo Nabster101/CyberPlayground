@@ -19,8 +19,7 @@
                 $pdo = new PDO($dsn, $username, $password);
 
                 echo "<div class='container' style='width:40%; text-align:justify; margin: 3vh auto 5vh auto;'>";
-                echo "<h1 style='text-align:center;>'>SQL Injection - Pentest</h1>";
-                echo "<p>SQLi-pentest is a simple web application that is vulnerable to SQL injection attacks. The goal of this application is to provide a safe environment for security enthusiasts to practice their SQL injection skills.</p>";
+                echo "<h1 style='text-align:center;>'>SQL Injection</h1>";
                 echo "<p>SQL injection (SQLi) is a type of attack where an attacker can execute malicious SQL statements to manipulate a web application's database. This can lead to unauthorized access to sensitive data, modification of data, or even deletion of the entire database. SQLi attacks are categorized into different types, including in-band (same channel), inferential (blind), and out-of-band.</p>";
                 echo "</div>";
 
@@ -46,10 +45,12 @@
 
                     if ($stmt->rowCount() > 0) {
                         echo "<script>document.getElementById('login-form').style.display = 'none';</script>";
+                        echo "<div class='container' style='text-align:center; margin: 3vh auto 3vh auto'>";
                         echo "<h2>Logged in</h2>";
                         echo "<p>Welcome, $username</p>";
+                        echo "</div>";
                         
-                        echo "<div class='container'>";
+                        echo "<div class='container' style='text-align:center'>";
                         echo "<h1 class='tableTitle'>Users</h1>";
                         echo "<table class='userTable'>";
                         echo "<tr>";
@@ -74,7 +75,7 @@
 
                                 
                         echo "<div style='text-align:center;'>";
-                        echo "<a href='index.php' id='logout_button' style='text-align:center; margin: 3vh; display:block;'>Logout</a>";
+                        echo "<a href='./app.php' id='logout_button' style='text-align:center; margin: 3vh; display:block;'>Logout</a>";
                         echo "</div>";
 
                     } else {
@@ -94,14 +95,12 @@
 
         ?>
 
-        <div class="row">
-            <div class="col colCenter" style='text-align:center; margin-top:2vh;'>
-                <?php
+        <div class="colCenter" style='text-align:center; margin-top:2vh;'>
+            <?php
 
-                    echo "<a href='../index.php' id='home_button' class='homeButton'><i class='fa-solid fa-house' style='color:white'></i></a>";
+                echo "<a href='../index.php' id='home_button' style='font-size:3vh' class='homeButton'><i class='fa-solid fa-house' style='color:white'></i></a>";
 
-                ?>
-            </div>
+            ?>
         </div>
     
     </body>

@@ -11,13 +11,15 @@
     </head>
 
     <body>
-        <div class="indexTitleContainer">
-            <h1 class="indexTitle">Totally legit cool website</h1>
+        
+        <div class='container' style='width:40%; text-align:justify; margin: 3vh auto 5vh auto; color:white'>
+            <h1 style='text-align:center;>'>Local File Inclusion</h1>
+            <p>Local File Inclusion (LFI) is a type of vulnerability that allows an attacker to include files on a server through the web browser. This can lead to unauthorized access to sensitive files, such as configuration files, source code, or even system files. LFI attacks are categorized into different types, including direct and indirect.</p>
         </div>
 
         <div class="container">
             <div class="row">
-                <div class="col colCenter" style="color:white">
+                <div class="col colCenter" style="color:white; margin-top:4vh!important">
                     <?php
 
                         $dsn = 'pgsql:host=postgres;port=5432;dbname=database';
@@ -48,6 +50,9 @@
                     ?>
                 </div>
             </div>
+
+            <hr style='color:white'>
+
             <div class="row">
                 <div class="col colCenter">
                     <?php
