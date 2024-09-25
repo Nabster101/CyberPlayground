@@ -2,15 +2,21 @@ DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE users(
-    id int primary key,
+    id SERIAL primary key,
     username varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     email varchar(255) NOT NULL
 );
 
-INSERT INTO users (id, username, password, email)
+CREATE TABLE comments (
+    id SERIAL primary key,
+    username varchar(255) NOT NULL,
+    comment text NOT NULL
+);
+
+INSERT INTO users (username, password, email)
 VALUES
-    (1, 'admin', 'admin', 'admin@localhost'),
-    (2, 'user', 'user', 'user@localhost'),
-    (3, 'guest', 'guest', 'guest@localhost');
+    ('admin', 'admin', 'admin@localhost'),
+    ('user', 'user', 'user@localhost'),
+    ('guest', 'guest', 'guest@localhost');
     

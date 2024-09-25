@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -19,28 +23,67 @@
         <div class="container">
             <div class="row">
                 <div class="col colCenter" style="margin-top:4vh!important">
+                    <form method="GET">
+                        <input type="text" name="search" placeholder="Search...">
+                        <br><br>
+                        <input type="submit" value="Search">
+                    </form>
+
+                    <!-- <script>alert('ao')</script> -->
+
+                    <p id="results" style='color:white; margin-top:2vh;'></p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col colCenter" style="margin-top:4vh!important">
                     <?php
 
-                        echo "<form method='GET'>";
-                        echo "<input type='text' name='username' placeholder='Username'>";
-                        echo "<br>";
-                        echo "<br>";
-                        echo "<input type='submit' value='Login'>";
-                        echo "</form>";
+                        $dsn = 'pgsql:host=postgres;port=5432;dbname=database';
+                        $username = 'user';
+                        $password = '.UYr930Qr';
 
-                        if(isset($_GET['username'])) {
-                            $username = $_GET['username'];
+                        $pdo = new PDO($dsn, $username, $password);
+
+                        if(isset($_SESSION['username'])) {
+                            $user = $_SESSION['username'];
+                            echo "<form method='POST'>";
+                            echo "<h2 style='color:white;'>Welcome, " . $user . "!</h2>";
+                            echo "<form method='POST'>";
+                            echo "<textarea name='comment' placeholder='Enter your comment'></textarea>";
+                            echo "<br><br>";
+                            echo "<input type='submit' value='Submit Comment'>";
+                            echo "</form>";
+
+                            if (isset($_POST['comment'])) {
+                                $user_comment = $user;
+                                $comment = $_POST['comment'];
+    
+                                $sql = "INSERT INTO comments (username, comment) VALUES ('$user', '$comment')";
+                                $stmt = $pdo->exec($sql);
+                            }
                         }
+
 
                     ?>
                 </div>
             </div>
             <div class="row">
-                <div class="col colCenter">
+                <div class="col colCenter" style="margin-top:4vh!important;color:white">
+                    <h2 style='color:white;'>Comments:</h2>
                     <?php
+                        $sql = "SELECT * FROM comments";
+                        $stmt = $pdo->query($sql);
 
-                        if(isset($username)) {
-                            echo "<h2 style='color:white;'>Displaying: $username!</h2>";
+                        if($stmt->rowCount() == 0) {
+                            echo "<p>No comments yet.</p>";
+                        }else{
+                            while ($row = $stmt->fetch()) {
+                                $usr = $row['username'];
+                                $cmt = $row['comment'];
+    
+                                echo "<p><strong>$usr:</strong> $cmt</p>";
+                            }
                         }
 
                     ?>
@@ -57,6 +100,15 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            let urlParams = new URLSearchParams(window.location.search);
+            let searchTerm = urlParams.get('search');
+            
+            if (searchTerm) {
+                document.getElementById('results').innerHTML = "Search results for: " + searchTerm;
+            }
+        </script>
         
         <script src="https://kit.fontawesome.com/44d253a4e8.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

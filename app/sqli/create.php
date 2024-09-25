@@ -39,12 +39,9 @@
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     $email = $_POST['email'];
-                    $id = random_int(3, 100000);
-                    $sql = "INSERT INTO users (id,username, email, password) VALUES ($id, '$username', '$email', '$password')";
+                    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
 
-                    // Preparare ed eseguire la query
                     $stmt = $pdo->exec($sql);
-
                 }
 
 
