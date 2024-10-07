@@ -15,7 +15,7 @@
     <body>
         <div class='container' style='width:40%; text-align:justify; margin: 3vh auto 5vh auto; color:white'>
             <h1 style='text-align:center;>'>Insecure Direct Object Reference</h1>
-            <p>Insecure Direct Object Reference (IDOR) is a type of vulnerability that allows attackers to access unauthorized resources on a server. This can lead to unauthorized access to sensitive data, such as user accounts, files, or database records. IDOR attacks are categorized into different types, including direct and indirect.</p>
+            <p style="text-align:justify">An Insecure Direct Object Reference (IDOR) attack occurs when a web application exposes references to internal objects, like database records or files, through user inputs, without proper authorization checks. Attackers can manipulate these references (such as IDs or usernames in URLs) to access or modify data they shouldn't be allowed to view, leading to unauthorized access to sensitive information.</p>
         </div>
         
 
@@ -30,13 +30,13 @@
                         $pdo = new PDO($dsn, $username, $password);
 
 
-                        if (isset($_GET['username'])) {
-                            $username = $_GET['username'];
-                            $sql = "SELECT * FROM users WHERE username = '$username'";
+                        if (isset($_GET['user'])) {
+                            $user = $_GET['user'];
+                            $sql = "SELECT * FROM users WHERE username = '$user'";
                             $stmt = $pdo->query($sql);
 
-                            echo "<h3 class='tableTitle' style='margin-top:4vh'>User profile</h3>";
-                            echo "<table class='table' style='color:white; margin-top:3vh;'>";
+                            echo "<h3 class='tableTitle' style='margin-top:4vh; margin-bottom: 4vh'>User profile</h3>";
+                            echo "<table class='table' style='color:white; margin: 0 auto; width: 50%'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th scope='col'>ID</th>";
@@ -63,6 +63,14 @@
                                 echo "</tbody>";
                             echo "</table>";
                         }
+                    ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col colCenter">
+                    <?php
+                        echo "<p style='color:white'>Currently logged in as: <b>" . $_SESSION['username'] . "</b></p>";
                     ?>
                 </div>
             </div>

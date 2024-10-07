@@ -111,48 +111,60 @@
                 }
             ?>
             <div class="row check">
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 p-4">
                     <div class="attackContainer">
                         <h4 style="text-align:center;">SQL Injection</h4>
                         <p style="text-align:justify">SQL injection (SQLi) is a type of attack where an attacker can execute malicious SQL statements to manipulate a web application's database. This can lead to unauthorized access to sensitive data, modification of data, or even deletion of the entire database. SQLi attacks are categorized into different types, including in-band (same channel), inferential (blind), and out-of-band.</p>
                         <button class="btn btn-primary" onclick="window.location.href='/sqli/app.php'">Start</button>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 p-4">
                     <div class="attackContainer">
                         <h4 style="text-align:center;">Cross-Site Scripting</h4>
                         <p style="text-align:justify">Cross-Site Scripting (XSS) is a type of security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. These scripts can steal sensitive information, deface websites, or redirect users to malicious websites. XSS attacks are categorized into different types, including stored, reflected, and DOM-based.</p>
                         <button class="btn btn-primary" onclick="window.location.href='/xss/app.php'">Start</button>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 p-4">
                     <div class="attackContainer">
-                        <h4 style="text-align:center;">Local File Inclusion</h4>
-                        <p style="text-align:justify">Local File Inclusion (LFI) is a type of vulnerability that allows an attacker to include files on a server through the web browser. This can lead to unauthorized access to sensitive files, such as configuration files, source code, or even system files. LFI attacks are categorized into different types, including direct and indirect.</p>
+                        <h4 style="text-align:center;">File Inclusion</h4>
+                        <p style="text-align:justify">File inclusion attacks are a type of web vulnerability that occurs when a web application includes files dynamically, without properly validating the input provided by users. These vulnerabilities allow an attacker to include unauthorized files, potentially leading to the execution of malicious code, data theft, or server compromise.</p>
                         <button class="btn btn-primary" onclick="window.location.href='/lfi/app.php'">Start</button>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 p-4">
                     <div class="attackContainer">
-                        <h4 style="text-align:center;">Command Injection</h4>
-                        <p style="text-align:justify">Command Injection is a type of vulnerability that allows attackers to execute arbitrary commands on a server. This can lead to unauthorized access to sensitive data, modification of files, or even complete control of the server. Command Injection attacks are categorized into different types, including blind, time-based, and out-of-band.</p>
-                        <button class="btn btn-primary" onclick="window.location.href='/cmi/app.php'">Start</button>
+                        <div class="row">
+                            <div class="col">
+                                <h4 style="text-align:center;">Command Injection</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p style="text-align:justify">Command Injection is a type of vulnerability that allows attackers to execute arbitrary commands on a server. This can lead to unauthorized access to sensitive data, modification of files, or even complete control of the server. Command Injection attacks are categorized into different types including, direct command injections, blind command injections, and OS command injections.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary" onclick="window.location.href='/cmi/app.php'">Start</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 p-4">
                     <div class="attackContainer">
                         <h4 style="text-align:center;">Insecure Direct Object Reference</h4>
-                        <p style="text-align:justify">Insecure Direct Object Reference (IDOR) is a type of vulnerability that allows attackers to access unauthorized resources on a server. This can lead to unauthorized access to sensitive data, such as user accounts, files, or database records. IDOR attacks are categorized into different types, including direct and indirect.</p>
+                        <p style="text-align:justify">An Insecure Direct Object Reference (IDOR) attack occurs when a web application exposes references to internal objects, like database records or files, through user inputs, without proper authorization checks. Attackers can manipulate these references (such as IDs or usernames in URLs) to access or modify data they shouldn't be allowed to view, leading to unauthorized access to sensitive information.</p>
                         <?php
                             $user = $_SESSION['username'];
-                            echo "<a class='btn btn-primary' href='../idor/app.php?username=" . urlencode($user) . "' >Start</a>";
+                            echo "<a class='btn btn-primary' href='../idor/app.php?user=" . urlencode($user) . "' >Start</a>";
                         ?>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12 p-4">
                     <div class="attackContainer">
                         <h4 style="text-align:center;">Cross-Site Request Forgery</h4>
-                        <p style="text-align:justify">Cross-Site Request Forgery (CSRF) is a type of attack where an attacker tricks a user into performing actions on a website without their knowledge or consent. This can lead to unauthorized transactions, data manipulation, or account takeover. CSRF attacks are categorized into different types, including stored, reflected, and DOM-based.</p>
+                        <p style="text-align:justify">Cross-Site Request Forgery (CSRF) is a type of attack where an attacker tricks a user into performing actions on a website without their knowledge or consent. This can lead to unauthorized transactions, data manipulation, or account takeover. CSRF attacks are categorized into different types, including stored and reflected.</p>
                         <button class="btn btn-primary" onclick="window.location.href='/csrf/app.php'">Start</button>
                     </div>
                 </div>

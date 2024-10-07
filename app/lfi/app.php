@@ -14,8 +14,8 @@
     <body>
         
         <div class='container' style='width:40%; text-align:justify; margin: 3vh auto 5vh auto; color:white'>
-            <h1 style='text-align:center;>'>Local File Inclusion</h1>
-            <p>Local File Inclusion (LFI) is a type of vulnerability that allows an attacker to include files on a server through the web browser. This can lead to unauthorized access to sensitive files, such as configuration files, source code, or even system files. LFI attacks are categorized into different types, including direct and indirect.</p>
+            <h1 style='text-align:center;>'>File Inclusion</h1>
+            <p>File inclusion attacks are a type of web vulnerability that occurs when a web application includes files dynamically, without properly validating the input provided by users. These vulnerabilities allow an attacker to include unauthorized files, potentially leading to the execution of malicious code, data theft, or server compromise.</p>
         </div>
 
         <div class="container">
@@ -28,23 +28,23 @@
                         $password = '.UYr930Qr';
 
                         $pdo = new PDO($dsn, $username, $password);
+
+                        echo "<h3 class='tableTitle'>Imporant info to display</h3>";
+                        echo "<p>Some important information to display here...</p>";
                         
                         echo "<form method='GET'>";
-                        echo "<input type='text' name='profile' placeholder='Search for user profile to show...'>";
+                        echo "<input type='text' name='file' placeholder='Search for data to show...'>";
                         echo "<br>";
                         echo "<br>";
-                        echo "<input type='submit' value='search'>";
-                        echo "</form>";
+                        echo "<input style='margin-bottom:3vh' type='submit' value='search'>";
+                        echo "</form>";                        
 
-                        if (isset($_GET['profile'])) {
-                            $user = $_GET['profile'];
-                            echo "<h3 class='tableTitle' style='margin-top:4vh'>User profile</h3>";
-                            echo "<p>Showing profile for $user</p>";
-                            include('profile.php');
-                            if (strpos($user, '.') === false) {
-                                $user .= '.php';
+                        if (isset($_GET['file'])) {
+                            
+                            $data = $_GET['file'];
+                            if(!include($data)){
+                                echo "<p>File not found!</p>";
                             }
-                            include($user);
                         } 
                         
 

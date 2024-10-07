@@ -21,17 +21,26 @@
     <body>
         <div class='container' style='width:40%; text-align:justify; margin: 3vh auto 5vh auto; color:white'>
             <h1 style='text-align:center;>'>Cross-Site Request Forgery</h1>
-            <p>Cross-Site Request Forgery (CSRF) is a type of attack where an attacker tricks a user into performing actions on a website without their knowledge or consent. This can lead to unauthorized transactions, data manipulation, or account takeover. CSRF attacks are categorized into different types, including stored, reflected, and DOM-based.</p>
+            <p>Cross-Site Request Forgery (CSRF) is a type of attack where an attacker tricks a user into performing actions on a website without their knowledge or consent. This can lead to unauthorized transactions, data manipulation, or account takeover. CSRF attacks are categorized into different types, including stored and reflected.</p>
         </div>
 
         <div class="container">
             <div class="row">
                 <div class="col colCenter">
+                    
                     <div class="content">
                         <?php
                             $user = $_SESSION['username'];
                             echo "<h3 class='tableTitle'>Welcome $user</h3>";
                             echo "<p>This form is to change your password!</p>";
+                            
+                            echo "<form method='POST'>";
+                            echo "<input type='password' name='password' placeholder='New password'>";
+                            echo "<br>";
+                            echo "<br>";
+                            echo "<input type='submit' value='Change password'>";
+                            echo "</form>";
+
 
                             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $newPassword = $_POST['password'];
@@ -39,15 +48,7 @@
                                 $sql = "UPDATE users SET password='$newPassword' WHERE username='$user'";
                                 $stmt = $pdo->query($sql);
                             }
-
-
-                        ?>
-
-                        <form method="POST" action="">
-                            <label>Nuova password:</label>
-                            <input type="password" name="password">
-                            <button type="submit">Change password!</button>
-                        </form>
+                        ?>                       
                     </div>
                 </div>
             </div>

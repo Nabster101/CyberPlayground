@@ -9,13 +9,16 @@ body{
 }
 
 .attackContainer{
-    height: 90%;
-    text-align: center;
+    height: 100%;
     background: white;
     border-radius: 40px;
     padding: 3vh;
     border: 2px solid white;
     margin: 2vh;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .userTable{

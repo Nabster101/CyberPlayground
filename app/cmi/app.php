@@ -12,7 +12,7 @@
         
         <div class='container' style='width:40%; text-align:justify; margin: 3vh auto 5vh auto; color:white'>
             <h1 style='text-align:center;>'>Command Injection</h1>
-            <p>Command Injection is a type of vulnerability that allows attackers to execute arbitrary commands on a server. This can lead to unauthorized access to sensitive data, modification of files, or even complete control of the server. Command Injection attacks are categorized into different types, including blind, time-based, and out-of-band.</p>
+            <p>Command Injection is a type of vulnerability that allows attackers to execute arbitrary commands on a server. This can lead to unauthorized access to sensitive data, modification of files, or even complete control of the server. Command Injection attacks are categorized into different types, including direct command injections, blind command injections, and OS command injections.</p>
         </div>
         
 
@@ -21,16 +21,19 @@
                 <div class="col colCenter">
                     <?php
 
-                        echo "<form method='get'>";
-                        echo "<input type='text' name='cmd' placeholder='Enter command here'>";
-                        echo "<input type='submit' value='Execute'>";
+                        // ; cat ../../../../etc/passwd; 
+
+                        echo "<h3 class='tableTitle'>Ping test</h3>";
+                        echo "<p>Enter an IP address to ping:</p>";
+
+                        echo "<form method='POST'>";
+                        echo "<input type='text' name='ip' placeholder='Enter ip to ping...'>";
+                        echo "<input type='submit' value='Execute' style='margin-bottom:4vh'>";
                         echo "</form>";
 
-                        if(isset($_GET['cmd'])) {
-                            echo "<h5 style='margin-top:3vh'>Command output</h5>";
-                            echo "<pre>";
-                            echo shell_exec($_GET['cmd']);
-                            echo "</pre>";
+
+                        if(isset($_POST['ip'])) {
+                            include('ping.php');
                         }
                     ?>
                 </div>
